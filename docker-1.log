@@ -1,0 +1,8 @@
+REPOSITORY                TAG                 IMAGE ID            CREATED             SIZE
+raian13/ubuntu-tmp-file   latest              d1c6d682dfbc        46 seconds ago      112MB
+ubuntu                    16.04               0458a4468cbc        4 days ago          112MB
+hello-world               latest              f2a91732366c        2 months ago        1.85kB
+
+docker inspect <u_image_id> - описывает состояние образа, постоянные свойства
+
+docker inspect <u_container_id> - описывает состояние контейнера, переменные свойства, существенные для данного экземпляра и не существующие для образа (сетевые настройки, например, и т.д.)
