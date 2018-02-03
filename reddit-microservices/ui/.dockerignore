@@ -1,0 +1,4 @@
+# ignore this files & folders while building docker image
+docker_build.sh
+Dockerfile*
+.dockerignore
