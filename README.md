@@ -31,3 +31,7 @@ nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
 ### Задание со * на стр. 36
 
 Базовое имя проекта по умолчанию соответствует имени каталога, в котором размещается docker-compose.yml. Чтобы изменить его - надо в .env задать переменную COMPOSE_PROJECT_NAME
+
+## ДЗ №19
+
+Развернут сервер CI/CD gitlab-ci. Настроен pipeline для тестового приложения reddit.
