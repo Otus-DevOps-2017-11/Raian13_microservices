@@ -1,9 +1,9 @@
 FROM alpine:3.7
 RUN apk --no-cache add \ 
-    ruby ruby-dev build-base \ 
+    ruby ruby-dev ruby-json build-base \ 
     && gem install bundler --no-ri --no-rdoc
 
-ENV APP_HOME /app
+ARG APP_HOME="/app"
 RUN mkdir "$APP_HOME"
 WORKDIR $APP_HOME
 COPY Gemfile* $APP_HOME/
