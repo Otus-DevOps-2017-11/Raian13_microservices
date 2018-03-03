@@ -35,3 +35,12 @@ nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
 ## ДЗ №19
 
 Развернут сервер CI/CD gitlab-ci. Настроен pipeline для тестового приложения reddit.
+
+## ДЗ №20
+
+Cозданы окружения dev, stage, production, настроен pipeline для работы с окружениями. Настроено создание динамического окружения для отдельных веток.
+
+## ДЗ №21
+
+Докер хаб с образами: https://hub.docker.com/r/raian13/
+Настроен и запущен prometheus; настроен мониторинг микросервисов ui, comment и самого prometheus. Настроен мониторинг ноды с докер-контейнерами с использованием node-exporter, мониторинг MongoDB с использованием mongodb-exporter.
