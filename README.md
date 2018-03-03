@@ -44,3 +44,4 @@ Cозданы окружения dev, stage, production, настроен pipeli
 
 Докер хаб с образами: https://hub.docker.com/r/raian13/
 Настроен и запущен prometheus; настроен мониторинг микросервисов ui, comment и самого prometheus. Настроен мониторинг ноды с докер-контейнерами с использованием node-exporter, мониторинг MongoDB с использованием mongodb-exporter.
+
