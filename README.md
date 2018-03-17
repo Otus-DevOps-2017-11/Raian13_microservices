@@ -42,14 +42,27 @@ Cозданы окружения dev, stage, production, настроен pipeli
 
 ## ДЗ №21
 
-Докер хаб с образами: https://hub.docker.com/r/raian13/
+Докер хаб с образами: <https://hub.docker.com/r/raian13/>
 Настроен и запущен prometheus; настроен мониторинг микросервисов ui, comment и самого prometheus. Настроен мониторинг ноды с докер-контейнерами с использованием node-exporter, мониторинг MongoDB с использованием mongodb-exporter.
 
 ## ДЗ №23
-Докер хаб с образами: https://hub.docker.com/r/raian13/
-Опробована работа со следующими продуктами: cAdvisor для мониторинга Docker-контейнеров, с отдачей метрик в Prometheus; Grafana - визуализация метрик из Prometheus; алертинг из Prometheus в Slack. 
+
+Докер хаб с образами: <https://hub.docker.com/r/raian13/>
+Опробована работа со следующими продуктами: cAdvisor для мониторинга Docker-контейнеров, с отдачей метрик в Prometheus; Grafana - визуализация метрик из Prometheus; алертинг из Prometheus в Slack.  
 
 ## ДЗ №25
-Опробована работа с централизованным логированием на основе стека Elasticsearch + Fluentd + Kibana. Разобран парсинг логов с помощью grok-шаблонов. 
-Выполнено первое задание со звездочкой со стр. 41 - разбираются оба формата логов UI-сервиса. 
+
+Опробована работа с централизованным логированием на основе стека Elasticsearch + Fluentd + Kibana. Разобран парсинг логов с помощью grok-шаблонов.  
+Выполнено первое задание со звездочкой со стр. 41 - разбираются оба формата логов UI-сервиса.  
 Опробована работа с распределенным трейсингом на основе Zipkin.
+
+## ДЗ №27
+
+Развернут кластер Docker Swarm с тестовым приложением и мониторингом. Сервисы приложения описаны в docker/docker-compose.yml, мониторинг - в docker-compose.monitoring-swarm.yml.  
+Команда для деплоя кластера:  
+docker stack deploy --compose-file=<(docker-compose -f docker-compose.yml -f docker-compose.monitoring-swarm.yml config 2>/dev/null) DEV
+
+### Поведение контейнеров после добавления третьего worker
+
+После добавления worker-3 на нем сразу был поднят контейнер с node-exporter - т.к. этот сервис деплоится в global режиме.  
+После увеличения числа реплик до 3 и docker stack deploy... - на worker-3 появилось по одному экземпляру ui, post и comment сервисов.
