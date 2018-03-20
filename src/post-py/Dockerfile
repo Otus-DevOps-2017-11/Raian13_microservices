@@ -5,7 +5,10 @@ RUN pip install flask pymongo
 WORKDIR /app
 COPY . /app/
 
-RUN pip install -r /app/requirements.txt
+RUN BUILD_PACKAGES="gcc build-base linux-headers" \
+&& apk add --no-cache $BUILD_PACKAGES \
+&& pip install -r /app/requirements.txt \
+&& apk del $BUILD_PACKAGES
 
 ENV POST_DATABASE_HOST post_db
 ENV POST_DATABASE posts
