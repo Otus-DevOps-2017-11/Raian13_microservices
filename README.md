@@ -66,3 +66,7 @@ docker stack deploy --compose-file=<(docker-compose -f docker-compose.yml -f doc
 
 После добавления worker-3 на нем сразу был поднят контейнер с node-exporter - т.к. этот сервис деплоится в global режиме.  
 После увеличения числа реплик до 3 и docker stack deploy... - на worker-3 появилось по одному экземпляру ui, post и comment сервисов.
+
+## ДЗ №28
+
+Пройден tutorial "Kubernetes the Hard Way"
