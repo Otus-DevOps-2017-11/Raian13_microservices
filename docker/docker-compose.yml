@@ -2,41 +2,101 @@ version: '3.3'
 services:
   post_db:
     image: mongo:3.2
+    deploy:
+      placement:
+        constraints:
+          - node.labels.reliability == high
     volumes:
       - post_db:/data/db
     networks:
-      - back_net
+      back_net:
+        aliases:
+          - comment_db
 
   ui:
     image: ${USER_NAME}/ui:${UI_VERSION}
+    deploy:
+      placement:
+        constraints:
+          - node.role == worker
+      mode: replicated
+      replicas: 3
+      update_config:
+        delay: 5s
+        parallelism: 1
+        failure_action: pause
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 150M
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+        delay: 3s
     ports:
       - ${UI_PORT}:9292/tcp
     networks:
       - front_net
-    logging:
-      driver: "fluentd"
-      options:
-        fluentd-address: localhost:24224
-        tag: service.ui
+#    logging:
+#      driver: "fluentd"
+#      options:
+#        fluentd-address: localhost:24224
+#        tag: service.ui
 
   post:
     image: ${USER_NAME}/post:${POST_VERSION}
+    deploy:
+      placement:
+        constraints:
+          - node.role == worker
+      mode: replicated
+      replicas: 3
+      update_config:
+        delay: 10s
+        parallelism: 2
+        failure_action: rollback
+      resources:
+        limits:
+          cpus: '0.3'
+          memory: 300M
+      restart_policy:
+        condition: on-failure
+        max_attempts: 10
+        delay: 1s
     networks:
       - front_net
       - back_net
-    logging:
-      driver: "fluentd"
-      options:
-        fluentd-address: localhost:24224
-        tag: service.post
+#    logging:
+#      driver: "fluentd"
+#      options:
+#        fluentd-address: localhost:24224
+#        tag: service.post
 
   comment:
     image: ${USER_NAME}/comment:${COMMENT_VERSION}
+    deploy:
+      placement:
+        constraints:
+          - node.role == worker
+      mode: replicated
+      replicas: 3
+      update_config:
+        delay: 10s
+        parallelism: 2
+        failure_action: rollback
+      resources:
+        limits:
+          cpus: '0.3'
+          memory: 300M
+      restart_policy:
+        condition: on-failure
+        max_attempts: 10
+        delay: 1s
     networks:
       - front_net
       - back_net
-    links:
-      - "post_db:comment_db"
+#    links:
+#      - "post_db:comment_db"
 
 volumes:
   post_db:
