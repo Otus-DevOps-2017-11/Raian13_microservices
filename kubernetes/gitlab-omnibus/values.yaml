@@ -34,11 +34,11 @@ postgresImage: postgres:9.6.5
 # If you disable postgresDedicatedStorage, you should consider bumping up gitlabRailsStorageSize
 postgresDedicatedStorage: true
 postgresAccessMode: ReadWriteOnce
-postgresStorageSize: 20Gi
+#postgresStorageSize: 30Gi
 gitlabDataAccessMode: ReadWriteOnce
-gitlabDataStorageSize: 20Gi
+#gitlabDataStorageSize: 30Gi
 gitlabRegistryAccessMode: ReadWriteOnce
-#gitlabRegistryStorageSize: 20Gi
+#gitlabRegistryStorageSize: 30Gi
 gitlabConfigAccessMode: ReadWriteOnce
 #gitlabConfigStorageSize: 1Gi
 gitlabRunnerImage: gitlab/gitlab-runner:alpine-v10.6.0

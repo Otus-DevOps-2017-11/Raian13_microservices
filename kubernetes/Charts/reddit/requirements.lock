@@ -8,8 +8,11 @@ dependencies:
 - name: comment
   repository: file://../comment
   version: 1.0.0
+- name: zipkin
+  repository: file://../zipkin
+  version: 1.0.0
 - name: mongodb
   repository: https://kubernetes-charts.storage.googleapis.com
   version: 1.0.0
-digest: sha256:1ef389f68f687d6c2d60a652c9a05e18a3212eb0d8c74b9db3846f09ab84015e
-generated: 2018-04-07T20:33:58.760831141+03:00
+digest: sha256:951f22ca4502827729bc34954e7ddbba6be23cbe2bd34da70c05391bb445ffaa
+generated: 2018-04-09T22:47:45.124631871+03:00

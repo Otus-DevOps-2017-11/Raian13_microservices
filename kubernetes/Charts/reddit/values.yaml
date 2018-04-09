@@ -18,3 +18,8 @@ ui:
     tag: latest
     service:
       externalPort: 9292
+
+zipkin:
+  image:
+    repository: openzipkin/zipkin
+    tag: latest
