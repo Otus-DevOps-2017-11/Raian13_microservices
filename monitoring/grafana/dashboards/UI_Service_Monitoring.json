@@ -2,7 +2,7 @@
   "__inputs": [
     {
       "name": "DS_PROM",
-      "label": "Prom",
+      "label": "prom",
       "description": "",
       "type": "datasource",
       "pluginId": "prometheus",
@@ -14,7 +14,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "5.0.0"
+      "version": "5.0.4"
     },
     {
       "type": "panel",
@@ -46,6 +46,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
+  "iteration": 1523719732450,
   "links": [],
   "panels": [
     {
@@ -85,7 +86,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.95,sum(rate(ui_request_latency_seconds_bucket[5m])) by (le))",
+          "expr": "histogram_quantile(0.95,sum(rate(ui_request_latency_seconds_bucket{kubernetes_namespace=~\"$namespace\"}[5m])) by (le))",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -165,7 +166,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(ui_request_count{http_status=~\"^[45].*\"}[1m])",
+          "expr": "rate(ui_request_count{kubernetes_namespace=~\"$namespace\",http_status=~\"^[45].*\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -245,7 +246,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(ui_request_count[1m])",
+          "expr": "rate(ui_request_count{kubernetes_namespace=~\"$namespace\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -292,7 +293,28 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_PROM}",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Env",
+        "multi": true,
+        "name": "namespace",
+        "options": [],
+        "query": "label_values(namespace)",
+        "refresh": 1,
+        "regex": "/.+/",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
   },
   "time": {
     "from": "now-15m",
@@ -326,5 +348,5 @@
   "timezone": "",
   "title": "UI_Service_Monitoring",
   "uid": "Dwn_uU6zz",
-  "version": 5
+  "version": 2
 }
