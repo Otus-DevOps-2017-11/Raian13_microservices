@@ -80,3 +80,9 @@ docker stack deploy --compose-file=<(docker-compose -f docker-compose.yml -f doc
 Развертывание приложения с помощью Helm; CI/CD с использованием Gitlab-CI.  
 
 При поставке через gitlab-ci - сервис post не работал, не находил zipkin. Поэтому добавила в комплект сервис zipkin - это решило проблему.
+
+## ДЗ № 32
+
+Мониторинг и логирование в Kubernetes
+
+В проект добавлен чарт для развертывания Prometheus; настроены endpoints для Prometheus с разделением по микросервисам; шаблонизированы дашборды приложения в Графане; опробован стек EFK на Kubernetes.
