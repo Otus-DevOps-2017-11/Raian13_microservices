@@ -70,3 +70,7 @@ docker stack deploy --compose-file=<(docker-compose -f docker-compose.yml -f doc
 ## ДЗ №28
 
 Пройден tutorial "Kubernetes the Hard Way"
+
+## ДЗ №30
+
+Для кластера Kubernetes настроены балансировка с помощью ingress, статический и динамический том хранилища.
