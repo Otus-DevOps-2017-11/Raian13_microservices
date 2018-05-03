@@ -6,3 +6,5 @@ build_info.txt
 .env
 
 mongodb_exporter
+
+Gitlab_ci

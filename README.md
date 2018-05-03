@@ -74,3 +74,9 @@ docker stack deploy --compose-file=<(docker-compose -f docker-compose.yml -f doc
 ## ДЗ №30
 
 Для кластера Kubernetes настроены балансировка с помощью ingress, статический и динамический том хранилища.
+
+## ДЗ №31
+
+Развертывание приложения с помощью Helm; CI/CD с использованием Gitlab-CI.  
+
+При поставке через gitlab-ci - сервис post не работал, не находил zipkin. Поэтому добавила в комплект сервис zipkin - это решило проблему.

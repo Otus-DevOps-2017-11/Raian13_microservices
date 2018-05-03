@@ -1,0 +1,8 @@
+---
+service:
+  internalPort: 9411
+  externalPort: 9411
+
+image:
+  repository: openzipkin/zipkin
+  tag: latest
